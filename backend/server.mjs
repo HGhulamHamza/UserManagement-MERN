@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection string
-const mongoUri = 'mongodb://localhost:27017/user_management'; 
+const mongoUri = 'mongodb://localhost:27017/UserManagement-Mern'; 
 
 // Connect to MongoDB
 mongoose.connect(mongoUri, {
@@ -20,7 +20,21 @@ mongoose.connect(mongoUri, {
   console.error('Error connecting to MongoDB:', err.message);
 });
 
+// Define User schema and model
+const userSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+});
 
+const User = mongoose.model('User', userSchema);
+
+// Error handler middleware
+function errorHandler(err, req, res, next) {
+  res.status(err.status || 500).json({
+    message: err.message || 'Something went wrong',
+    error: true,
+  });
+}
 
 
 
