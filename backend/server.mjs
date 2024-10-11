@@ -46,6 +46,22 @@ app.get('/api/users', async (req, res) => {
       res.status(500).json({ message: 'Server Error', error: true });
     }
   });
+  // POST a new user
+app.post('/api/users', async (req, res) => {
+    const { name, email } = req.body;
+  
+    if (!name || !email) {
+      return res.status(400).json({ message: 'Name and email are required!' });
+    }
+  
+    try {
+      const newUser = new User({ name, email });
+      await newUser.save();
+      res.status(201).json({ message: 'New user created!', data: newUser });
+    } catch (err) {
+      res.status(500).json({ message: 'Server Error', error: true });
+    }
+  });
   
 
 
