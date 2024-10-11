@@ -62,6 +62,21 @@ app.post('/api/users', async (req, res) => {
       res.status(500).json({ message: 'Server Error', error: true });
     }
   });
+  // PUT (Update) a user
+app.put('/api/users/:id', async (req, res) => {
+    const { id } = req.params;
+    const { name, email } = req.body;
+  
+    try {
+      const updatedUser = await User.findByIdAndUpdate(id, { name, email }, { new: true });
+      if (!updatedUser) {
+        return res.status(404).json({ message: 'User not found!' });
+      }
+      res.status(200).json({ message: 'User updated successfully!', data: updatedUser });
+    } catch (err) {
+      res.status(500).json({ message: 'Server Error', error: true });
+    }
+  });
   
 
 
