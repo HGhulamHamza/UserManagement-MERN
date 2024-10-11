@@ -16,7 +16,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 
-const API_URL = 'https://user-management-mern-eezk.vercel.app/api/users'; // Backend API URL
+const API_URL = 'http://localhost:4000/api/users'; // Backend API URL
 
 function App() {
   const [users, setUsers] = useState([]);

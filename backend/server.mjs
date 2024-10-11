@@ -11,6 +11,13 @@ app.use(express.json());
 // MongoDB connection string
 const mongoUri = 'mongodb://localhost:27017/UserManagement-Mern'; 
 
+// const corsOptions = {
+//     origin: 'http://localhost:5173/', // Your local React frontend URL
+//     optionsSuccessStatus: 200,
+//   };
+
+//   app.use(cors(corsOptions)); 
+
 // Connect to MongoDB
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
