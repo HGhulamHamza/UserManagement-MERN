@@ -11,14 +11,12 @@ app.use(express.json());
 // MongoDB connection string
 const mongoUri = 'mongodb://localhost:27017/mern-application'; 
 
-const corsOptions = {
-    origin: ["http://localhost:5173/"], // Your local React frontend URL
-    methods:["POST,GET,PUT,DELETE"],
-    credentials:true
-    
-  };
+// const corsOptions = {
+    // origin: 'http://localhost:5173', // Your local React frontend URL
+    // optionsSuccessStatus: 200,
+//   };
 
-  app.use(cors(corsOptions)); 
+//   app.use(cors(corsOptions)); 
 
 // Connect to MongoDB
 mongoose.connect(mongoUri, {
@@ -59,6 +57,7 @@ app.get('/api/users', async (req, res) => {
   // POST a new user
 app.post('/api/users', async (req, res) => {
     const { name, email } = req.body;
+    console.log("running");
   
     if (!name || !email) {
       return res.status(400).json({ message: 'Name and email are required!' });

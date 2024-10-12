@@ -16,7 +16,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 
-const API_URL = 'https://backend-crud-mern.vercel.app/api/users'; // Backend API URL
+const API_URL = 'http://127.0.0.1:4000/api/users'; // Backend API URL
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -73,6 +73,7 @@ function App() {
       showSnackbar('User added successfully!', 'success');
     } catch (error) {
       showSnackbar(error.response.data.message, 'error');
+      console.log("err>>>>" , error.message)
     }
   };
 
