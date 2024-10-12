@@ -12,8 +12,10 @@ app.use(express.json());
 const mongoUri = 'mongodb://localhost:27017/mern-application'; 
 
 const corsOptions = {
-    origin: 'http://localhost:5173/', // Your local React frontend URL
-    optionsSuccessStatus: 200,
+    origin: ["http://localhost:5173/"], // Your local React frontend URL
+    methods:["POST,GET,PUT,DELETE"],
+    credentials:true
+    
   };
 
   app.use(cors(corsOptions)); 
